@@ -1,0 +1,13 @@
+.tldrc/**
+Documents/secureCRT_logs/**
+.vscode-oss/**
+CTFs/**
+Music/**
+Pictures/**
+Library/**
+**/.git/**
+Luxoft/devices.git/**
+**/.venv/**
+**/venv/**
+**/.cache/**
+.Trash/**

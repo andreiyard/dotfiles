@@ -1,0 +1,8 @@
+# Test shortcurs
+alt - t : open -a "Ghostty"
+alt - b : open -a "Brave Browser"
+alt - v : open -a "Cisco Secure Client"
+alt - f : open -a "Finder"
+alt - w : open -a "Weather"
+alt - n : open -a "Telegram"
+# TODO: Add calendar, secureCRT, telegram, Teams

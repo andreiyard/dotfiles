@@ -1,0 +1,14 @@
+theme = "kitty_theme"
+
+copy-on-select = clipboard
+
+font-size = 18
+
+maximize = true
+window-height = 1000
+window-width = 1000
+
+bell-features = attention, system, title, audio
+
+# Shift+Enter for newline in Claude Code
+keybind = shift+enter=text:\x1b\r

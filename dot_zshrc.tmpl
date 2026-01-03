@@ -1,0 +1,117 @@
+# TODO: Move to .zshenv
+# Env variables
+export EDITOR="nvim"
+export VISUAL="nvim"
+export KITTY_REMOTE_PASS=" "
+
+# Command aliases
+alias ls='eza'
+alias la='eza -lha'
+alias ll='eza -lh'
+alias gits='git status'
+alias k='kubectl'
+alias aie='aichat -e'
+alias meshcommander='bash /Users/andrey/meshcommander/start_meshcommander.sh'
+#alias ssh='kitty +kitten ssh'
+
+# Extension aliases
+alias -s py=$VISUAL
+alias -s yaml=$VISUAL
+alias -s yml=$VISUAL
+alias -s md=$VISUAL
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd extendedglob nomatch
+unsetopt beep notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+# Add completion for con command
+zstyle ':completion:*:con:*' menu select
+# zstyle ':completion:*:poetry:*' menu select
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '/Users/andrey/.zshrc'
+
+fpath+=~/.zfunc
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Enable autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Prompt
+autoload -Uz promptinit
+promptinit
+
+prompt suse
+
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
+source "$HOME/.git-prompt.sh"
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS="yes"
+GIT_PS1_SHOWDIRTYSTATE="yes"
+GIT_PS1_SHOWUNTRACKEDFILES="yes"
+RPROMPT='$(__git_ps1)$(kube_ps1)'
+
+# Load dictionary of devices
+declare -A devices
+devices=()
+source ~/.network_devices
+
+# Create alias for cleaning project
+clning () {
+	cd /Users/andrey/anaidenov.nornir_asa_cleaning
+	. ./.venv/bin/activate
+}
+
+# Create alias for IKEA table height configuration
+table () {
+	if [[ $1 == "up" ]]
+	then
+		idasen-controller --mac-address 4FB67514-E279-6033-069B-1B669E580372 --move-to 1100
+	fi
+	if [[ $1 == "down" ]]
+	then
+		idasen-controller --mac-address 4FB67514-E279-6033-069B-1B669E580372 --move-to 670
+	else
+		echo "Error!"
+	fi
+	 
+}
+
+# Global aliases that convet device_name to ip_address
+# for device_name ip_address in ${(kv)devices}; do
+        # alias -g ${device_name}=${ip_address}
+# done
+
+[ -f "/Users/andrey/.ghcup/env" ] && source "/Users/andrey/.ghcup/env" # ghcup-env
+
+path+=~/.local/bin
+path+=/opt/homebrew/Cellar/zigup/2025.01.02/bin
+path+=~/zls/zig-out/bin
+path+=~/go/bin
+
+# SOPS config
+export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
+# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# GEMINI AI KEY - retrieved from Bitwarden
+export GEMINI_API_KEY={{ range (bitwarden "item" .bitwarden.gemini_api_key_id).fields }}{{ if eq .name "api_key" }}{{ .value }}{{ end }}{{ end }}
+
+# CLAUDE CODE NOTIFICATION HOOK CONFIG - retrieved from Bitwarden
+export NTFY_TOPIC={{ range (bitwarden "item" .bitwarden.ntfy_topic_id).fields }}{{ if eq .name "topic" }}{{ .value }}{{ end }}{{ end }}
+
+# The next line updates PATH for CLI.
+if [ -f '/Users/andrey/yandex-cloud/path.bash.inc' ]; then source '/Users/andrey/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/andrey/yandex-cloud/completion.zsh.inc' ]; then source '/Users/andrey/yandex-cloud/completion.zsh.inc'; fi
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/Cellar/tfenv/3.0.0/versions/1.12.2/terraform terraform

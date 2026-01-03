@@ -1,0 +1,46 @@
+# Ignore README.md
+README.md
+
+# Ignore temporary and cache files
+.DS_Store
+*.swp
+*~
+.*.tmp
+
+# Ignore history files
+.bash_history
+.zsh_history
+.histfile
+.python_history
+.node_repl_history
+.psql_history
+.sqlite_history
+.lesshst
+.viminfo
+
+# Ignore credentials and tokens
+.claude.json
+.claude.json.backup
+.emulator_console_auth_token
+
+# Ignore cache directories
+.cache/
+
+# Ignore local secrets (if you create .zshrc.local later)
+.zshrc.local
+.env.local
+.secrets
+
+# Ignore specific application data
+.wakatime.bdb
+.wakatime.log
+.wakatime-internal.cfg
+.anyconnect
+
+# Ignore VPN and network device configs (may contain IPs/passwords)
+.vpn/
+.network_devices
+
+# Ignore macOS specific
+.CFUserTextEncoding
+.wget-hsts
