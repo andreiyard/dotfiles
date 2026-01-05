@@ -100,11 +100,11 @@ path+=~/go/bin
 export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
 # source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
-# GEMINI AI KEY - retrieved from Bitwarden
-export GEMINI_API_KEY={{ range (bitwarden "item" .bitwarden.gemini_api_key_id).fields }}{{ if eq .name "api_key" }}{{ .value }}{{ end }}{{ end }}
-
-# CLAUDE CODE NOTIFICATION HOOK CONFIG - retrieved from Bitwarden
-export NTFY_TOPIC={{ range (bitwarden "item" .bitwarden.ntfy_topic_id).fields }}{{ if eq .name "topic" }}{{ .value }}{{ end }}{{ end }}
+# Source local environment overrides (not tracked in dotfiles)
+# Create ~/.zshenv.local for machine-specific secrets and configuration
+if [[ -f ~/.zshenv.local ]]; then
+  source ~/.zshenv.local
+fi
 
 # The next line updates PATH for CLI.
 if [ -f '/Users/andrey/yandex-cloud/path.bash.inc' ]; then source '/Users/andrey/yandex-cloud/path.bash.inc'; fi

@@ -26,8 +26,9 @@ README.md
 # Ignore cache directories
 .cache/
 
-# Ignore local secrets (if you create .zshrc.local later)
+# Ignore local secrets and environment overrides
 .zshrc.local
+.zshenv.local
 .env.local
 .secrets
 
