@@ -10,7 +10,7 @@ if [[ $# -eq 1 ]]; then
 else
     # Add your project directories here
     # Example: ~/work ~/personal ~/learn ~/go/src
-    selected=$(find ~/work ~/personal ~/learn -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+    selected=$({ find ~/work ~/personal ~/learn -mindepth 1 -maxdepth 1 -type d 2>/dev/null; chezmoi source-path; } | fzf)
 fi
 
 if [[ -z $selected ]]; then
