@@ -95,17 +95,6 @@ GIT_PS1_SHOWDIRTYSTATE="yes"
 GIT_PS1_SHOWUNTRACKEDFILES="yes"
 RPROMPT='$(__git_ps1)$(kube_ps1)'
 
-# Load dictionary of devices
-declare -A devices
-devices=()
-source ~/.network_devices
-
-# Create alias for cleaning project
-clning () {
-	cd /Users/andrey/anaidenov.nornir_asa_cleaning
-	. ./.venv/bin/activate
-}
-
 # Create alias for IKEA table height configuration
 table () {
 	if [[ $1 == "up" ]]
