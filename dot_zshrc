@@ -95,6 +95,12 @@ GIT_PS1_SHOWDIRTYSTATE="yes"
 GIT_PS1_SHOWUNTRACKEDFILES="yes"
 RPROMPT='$(__git_ps1)$(kube_ps1)'
 
+# Create alias for FZF cd
+cdf () {
+	dirname=$(fd -t directory | fzf)
+	cd "$dirname"
+}
+
 # Create alias for IKEA table height configuration
 table () {
 	if [[ $1 == "up" ]]
