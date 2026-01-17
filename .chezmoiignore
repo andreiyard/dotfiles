@@ -45,3 +45,18 @@ README.md
 # Ignore macOS specific
 .CFUserTextEncoding
 .wget-hsts
+
+# Bitwarden session token
+.con
+
+# Cloud provider configs with private keys
+.config/yandex-cloud/
+
+# Encryption keys
+.config/sops/
+
+# SSH configuration (user preference)
+.ssh/config
+
+# Raycast extensions (contain API keys)
+.config/raycast/
