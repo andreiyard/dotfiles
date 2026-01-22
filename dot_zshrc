@@ -16,6 +16,25 @@ alias aie='aichat -e'
 alias meshcommander='bash /Users/andrey/meshcommander/start_meshcommander.sh'
 #alias ssh='kitty +kitten ssh'
 
+# Gcore utils aliases
+newAlias () {
+	aliasName=$1
+	scriptFile=$2
+	scriptDir="$(dirname $scriptFile)"
+	if [[ -d "$scriptDir/.venv" ]]; then
+		pythonPath="$scriptDir/.venv/bin/python"
+	elif [[ -d "$scriptDir/../.venv" ]]; then
+		pythonPath="$scriptDir/../.venv/bin/python"
+	else
+		pythonPath="python"
+	fi
+	alias "$aliasName"="$pythonPath $scriptFile"
+}
+newAlias net ~/work/nc/NC/net.py
+newAlias ztp ~/work/gnoc-dev/ztp/ztp.py
+newAlias oob ~/work/gnoc-dev/kz/acs/acs.py
+newAlias smokeping ~/work/gnoc-dev/smokeping/src/smokeping.py
+
 # Extension aliases
 alias -s py=$VISUAL
 alias -s yaml=$VISUAL
@@ -147,3 +166,8 @@ if [ -f '/Users/andrey/yandex-cloud/completion.zsh.inc' ]; then source '/Users/a
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/Cellar/tfenv/3.0.0/versions/1.12.2/terraform terraform
+
+# Config Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
