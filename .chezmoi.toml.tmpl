@@ -1,5 +1,12 @@
+{{- $email := "andrei.naidenov.work@gmail.com" -}}
+{{- if eq .chezmoi.hostname "MAC-CF2937NW51" -}}
+{{-   $email = "andrei.naidenov@gcore.com" -}}
+{{- end }}
+
 # chezmoi configuration
 [data]
+    email = {{ $email | quote }}
+
     # Bitwarden item IDs for secrets
     [data.bitwarden]
         gemini_api_key_id = "7c857c5d-4637-41f7-a21e-b3c700d2ae2d"
